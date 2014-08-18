@@ -1,0 +1,13 @@
+'context-menu':
+  '.overlayer':
+      'Build': 'atom-build:build'
+
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'Build',
+      'command': 'atom-build:build'
+    ]
+  }
+]

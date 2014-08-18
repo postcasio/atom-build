@@ -1,0 +1,20 @@
+{
+  "name": "atom-build",
+  "main": "./lib/atom-build",
+  "version": "0.0.0",
+  "description": "A short description of your package",
+  "activationEvents": [
+    "atom-build:build"
+  ],
+  "repository": "https://github.com/postcasio/atom-build",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "ansi-to-html": "^0.2.0",
+    "emissary": "^1.2.2",
+    "glob": "^4.0.5",
+    "underscore": "^1.6.0"
+  }
+}
