@@ -8,6 +8,7 @@ module.exports =
 class AtomBuildView extends View
   @content: ->
     @div class: 'atom-build tool-panel panel-bottom', =>
+      @div 'Build Output', class: 'panel-heading'
       @div class: 'panel-body', =>
         @ul class: 'panel inset-panel bordered', outlet: 'output'
 
@@ -34,7 +35,7 @@ class AtomBuildView extends View
 
   build: ->
     atom.workspaceView.prependToBottom(this)
-    if builder = @registry.findBuilder(atom.workspace.getActiveEditor())
+    if builder = @registry.find(atom.workspace.getActiveEditor())
       @output.append "<li>Using build file #{builder.path}</li>"
       proc = builder.build(this)
       proc.on 'stdout', (message) =>
@@ -50,4 +51,4 @@ class AtomBuildView extends View
             @output.append "<li class=\"exit success\">Exited with code #{code}</li>"
 
     else
-      console.log 'no builder found'
+      @output.append "<li>Couldn\'t find an appropriate builder for this file.</li>"

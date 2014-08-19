@@ -1,7 +1,5 @@
 fs = require 'fs'
-{BufferedProcess} = require 'atom'
-{Emitter} = require 'emissary'
-_ = require 'underscore'
+BuildProcess = require './build-process'
 
 class Builder
 	config: null
@@ -19,13 +17,5 @@ class Builder
 				cwd: atom.project.getPath()
 
 	getScope: -> @config.scope
-
-class BuildProcess
-	Emitter.includeInto this
-	constructor: (options) ->
-		new BufferedProcess _.extend options,
-			stdout: (data) => @emit 'stdout', data
-			stderr: (data) => @emit 'stderr', data
-			exit: (code) => @emit 'exit', code
 
 module.exports = Builder

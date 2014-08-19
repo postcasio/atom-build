@@ -8,13 +8,13 @@ class BuilderRegistry
 
 		for searchPath in searchPaths
 			files = glob.sync path.join(searchPath, '**', '*.{atom,sublime}-build')
-			@loadBuilder file for file in files
+			@load file for file in files
 
 
-	loadBuilder: (path) ->
+	load: (path) ->
 		@builders.push new Builder(path)
 
-	findBuilder: (editor) ->
+	find: (editor) ->
 		for builder in @builders
 			return builder if builder.getScope() == editor.getGrammar().scopeName
 		return null
